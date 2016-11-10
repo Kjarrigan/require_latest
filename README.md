@@ -29,12 +29,21 @@ Or install it yourself as:
 
 ## Usage
 
-Its as simple as this:
-
 ```ruby
+
 require 'require_latest'
 
-require_latest 'fxruby'
+# 1) basic usage for gems on https://rubygems.org
+require_latest 'nokogiri'
+
+# version 2 for gems where package and require names are different
+require_latest 'fxruby', require 'fox16'
+
+# version 3 for gems on a different server (like a custom company gem-server)
+require_latest 'simple-logger', src: 'http://localgemserver:1234'
+
+# version 4 as combination of 2+3
+require_latest 'foo', require: 'bar', src: 'http://example.com'
 ```
 
 ## TODO
@@ -45,9 +54,9 @@ a good reason the tester hasn't updated that specific one.
 
 ## Development
 
-There are no dependencies to install. Just run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+There are no dependencies to install. You can run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To install this gem onto your local machine, run `bundle exec rake install`.
 
 ## Contributing
 
