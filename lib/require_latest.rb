@@ -1,11 +1,11 @@
 module RequireLatest
-  VERSION = '0.2.3'
+  VERSION = '0.2.4'
 
   require 'rubygems'
   require 'rubygems/remote_fetcher'
   require 'rubygems/name_tuple'
 
-  def require_latest(spec_name, src: 'https://rubygems.org')
+  def require_latest(spec_name, src: 'https://rubygems.org', require: spec_name)
     src = Gem::Source.new src
     list = src.load_specs(:latest).find_all{|spec| spec.name == spec_name }
     remote_spec = if list.size != 1
@@ -39,7 +39,7 @@ module RequireLatest
     else
       gem spec_name, local_spec.version
     end
-    require spec_name
+    Kernel.require require
   end
 end
 
