@@ -1,5 +1,5 @@
 module RequireLatest
-  VERSION = '0.2.2'
+  VERSION = '0.2.3'
 
   require 'rubygems'
   require 'rubygems/remote_fetcher'
@@ -11,7 +11,14 @@ module RequireLatest
     remote_spec = if list.size != 1
       # If there are multiple packages with the same name that usually means there are precompiled version for different
       # platforms. So check if a matching platform is available or just use the "ruby" (general) one.
-      list.find_all{|spec| RUBY_PLATFORM =~ Regexp.new(spec.platform) }.first || list.find_all{|spec| spec.platform == 'ruby' }.first
+      list = list.find_all{|spec| RUBY_PLATFORM =~ Regexp.new(spec.platform) }.first || list.find_all{|spec| spec.platform == 'ruby' }
+
+      # somehow I got two "latest" version for a gem:
+      # list = src.load_specs(:latest).find_all{|spec| spec.name == 'require_latest' }
+      # => [#<Gem::NameTuple require_latest, 0.2.1, ruby>, #<Gem::NameTuple require_latest, 0.2.2, ruby>]
+      # as I uploaded another version while an irb session with the old version was still running.
+      # so add an sort to really get the latest...
+      list.sort{|s1,s2| s1.version <=> s2.version }.reverse.first
     else
       list.first
     end
