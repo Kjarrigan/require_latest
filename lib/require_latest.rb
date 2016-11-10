@@ -8,12 +8,13 @@ module RequireLatest
   def require_latest(spec_name, src: 'https://rubygems.org')
     src = Gem::Source.new src
     list = src.load_specs(:latest).find_all{|spec| spec.name == spec_name }
-    list = if list.size != 1
+    remote_spec = if list.size != 1
       # If there are multiple packages with the same name that usually means there are precompiled version for different
       # platforms. So check if a matching platform is available or just use the "ruby" (general) one.
-      list.find_all{|spec| RUBY_PLATFORM =~ Regexp.new(spec.platform) }.first || list.find_all{|spec| spec.platform == 'ruby' }
+      list.find_all{|spec| RUBY_PLATFORM =~ Regexp.new(spec.platform) }.first || list.find_all{|spec| spec.platform == 'ruby' }.first
+    else
+      list.first
     end
-    remote_spec = list.first
 
     local_spec = begin
       Gem::Specification.find_by_name spec_name
