@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'require_latest_extension'
+require 'require_latest'
 
 Gem::Specification.new do |spec|
-  spec.name          = "require_latest_extension"
-  spec.version       = RequireLatestExtension::VERSION
+  spec.name          = "require_latest"
+  spec.version       = RequireLatest::VERSION
   spec.authors       = ["Holger Arndt"]
   spec.email         = ["github@kjarrigan.de"]
 

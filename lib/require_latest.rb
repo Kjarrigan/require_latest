@@ -1,5 +1,5 @@
-module RequireLatestExtension
-  VERSION = '0.1.0'
+module RequireLatest
+  VERSION = '0.2.0'
 
   require 'rubygems'
   require 'rubygems/remote_fetcher'
@@ -33,3 +33,5 @@ module RequireLatestExtension
     require spec_name
   end
 end
+
+include RequireLatest

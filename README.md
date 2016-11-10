@@ -1,4 +1,4 @@
-# RequireLatestExtension
+# require_latest
 
 Not many but at least for me helpfull lines of code which basically introduce one single command:
 
@@ -16,7 +16,7 @@ other usefull purposes. Please feel free to contact me and tell me your use-case
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'require_latest_extension'
+gem 'require_latest'
 ```
 
 And then execute:
@@ -25,16 +25,14 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install require_latest_extension
+    $ gem install require_latest
 
 ## Usage
 
 Its as simple as this:
 
 ```ruby
-require 'require_latest_extension'
-
-extend RequireLatestExtension
+require 'require_latest'
 
 require_latest 'fxruby'
 ```
@@ -53,7 +51,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/kjarrigan/require_latest_extension.
+Bug reports and pull requests are welcome on GitHub at https://github.com/kjarrigan/require_latest.
 
 
 ## License
