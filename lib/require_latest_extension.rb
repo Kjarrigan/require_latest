@@ -1,5 +1,3 @@
-require "require_latest_extension/version"
-
 module RequireLatestExtension
   VERSION = '0.1.0'
 

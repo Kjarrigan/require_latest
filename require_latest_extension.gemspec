@@ -1,7 +1,7 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'require_latest_extension/version'
+require 'require_latest_extension'
 
 Gem::Specification.new do |spec|
   spec.name          = "require_latest_extension"
