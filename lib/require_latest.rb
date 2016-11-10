@@ -1,5 +1,5 @@
 module RequireLatest
-  VERSION = '0.2.0'
+  VERSION = '0.2.1'
 
   require 'rubygems'
   require 'rubygems/remote_fetcher'
@@ -22,7 +22,7 @@ module RequireLatest
     end
 
 
-    if local_spec == :not_installed or (local_spec.version <= remote_spec.version)
+    if local_spec == :not_installed or (local_spec.version < remote_spec.version)
       Gem.install spec_name, remote_spec.version
 
       Gem.clear_paths
