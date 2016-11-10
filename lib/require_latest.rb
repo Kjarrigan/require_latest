@@ -1,5 +1,5 @@
 module RequireLatest
-  VERSION = '0.2.1'
+  VERSION = '0.2.2'
 
   require 'rubygems'
   require 'rubygems/remote_fetcher'
@@ -22,8 +22,9 @@ module RequireLatest
       :not_installed
     end
 
+    fail LoadError, "no gem `#{spec_name}` found locally or remotely (#{src})" if local_spec == :not_installed && remote_spec.nil?
 
-    if local_spec == :not_installed or (local_spec.version < remote_spec.version)
+    if local_spec == :not_installed or (remote_spec && (local_spec.version < remote_spec.version))
       Gem.install spec_name, remote_spec.version
 
       Gem.clear_paths
