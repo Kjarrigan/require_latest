@@ -37,7 +37,7 @@ require 'require_latest'
 require_latest 'nokogiri'
 
 # version 2 for gems where package and require names are different
-require_latest 'fxruby', require 'fox16'
+require_latest 'fxruby', require: 'fox16'
 
 # version 3 for gems on a different server (like a custom company gem-server)
 require_latest 'simple-logger', src: 'http://localgemserver:1234'
